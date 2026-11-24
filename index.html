@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio · Asma N'GHAM</title>
+  <!-- Polices Google Fonts : Space Grotesk (titres), Inter (texte), JetBrains Mono (labels/badges) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            daBg: '#1E1E1E',
+            daSurface: '#252525',
+            daSurfaceHover: '#2B2B2B',
+            daInk: '#F5F5F7',
+            daMuted: '#9E9EA4',
+            daFuchsia: '#E62E8A',
+            daLime: '#D4FF00',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#1E1E1E] text-[#F5F5F7] font-sans antialiased selection:bg-[#E62E8A]/30 selection:text-[#F5F5F7] overflow-x-hidden relative min-h-screen flex flex-col">
+
+  <!-- =========================================================
+       ARRIÈRE-PLAN ULTRA-ÉPURÉ : HALO ROSE FUCHSIA DOUX + LIGNE VERTICALE 1px JAUNE FLUO
+       ========================================================= -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <!-- Halo principal rose fuchsia très doux en haut à gauche -->
+    <div class="absolute -top-36 -left-32 w-[540px] h-[540px] rounded-full bg-[#E62E8A]/[0.11] blur-[110px]"></div>
+    <!-- Second halo rose fuchsia subtil en bas à droite -->
+    <div class="absolute -bottom-44 -right-28 w-[600px] h-[600px] rounded-full bg-[#E62E8A]/[0.06] blur-[130px]"></div>
+    <!-- Ligne verticale architecturale 1px jaune fluo -->
+    <div class="absolute top-0 bottom-0 right-[9%] w-px bg-[#D4FF00]/[0.28]"></div>
+  </div>
+
+  <!-- =========================================================
+       BARRE DE NAVIGATION FIXE
+       ========================================================= -->
+  <header class="sticky top-0 z-40 w-full bg-[#1E1E1E]/88 backdrop-blur-md border-b border-[#E62E8A]/30">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Monogramme typographique : "asma" | ligne 1px jaune fluo | "n" + "." rose fuchsia -->
+      <a href="#accueil" id="brand-link" class="inline-flex items-center group focus:outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00] rounded-md px-1 py-1" aria-label="Retour à l'accueil">
+        <span class="font-display font-bold text-lg tracking-tight text-[#F5F5F7] group-hover:text-white transition-colors">asma</span>
+        <span class="inline-block w-px h-5 bg-[#D4FF00] mx-2.5"></span>
+        <span class="font-sans font-light text-lg tracking-tight text-[#F5F5F7]/90">n<span class="text-[#E62E8A] font-semibold">.</span></span>
+      </a>
+
+      <!-- Navigation Desktop -->
+      <nav aria-label="Navigation principale" class="hidden md:block">
+        <ul class="flex items-center gap-1">
+          <li><a href="#accueil" data-nav="accueil" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] border border-transparent hover:border-white/[0.08] transition-all">Accueil</a></li>
+          <li><a href="#profil" data-nav="profil" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] border border-transparent hover:border-white/[0.08] transition-all">Profil</a></li>
+          <li><a href="#parcours" data-nav="parcours" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] border border-transparent hover:border-white/[0.08] transition-all">Parcours</a></li>
+          <li><a href="#competences" data-nav="competences" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] border border-transparent hover:border-white/[0.08] transition-all">Compétences</a></li>
+          <li><a href="#realisations" data-nav="realisations" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] border border-transparent hover:border-white/[0.08] transition-all">Projets</a></li>
+          <li><a href="#contact" data-nav="contact" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] border border-transparent hover:border-white/[0.08] transition-all">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Bouton menu mobile -->
+      <button type="button" id="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" class="md:hidden p-2.5 rounded-lg border border-white/[0.08] bg-[#252525] text-[#F5F5F7] hover:border-[#D4FF00]/60 transition-colors">
+        <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+        <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile déroulant -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/[0.08] bg-[#1E1E1E]/95 backdrop-blur-md">
+      <ul class="max-w-5xl mx-auto px-5 py-4 flex flex-col gap-1.5">
+        <li><a href="#accueil" data-nav="accueil" class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] hover:bg-[#252525] transition-colors">Accueil</a></li>
+        <li><a href="#profil" data-nav="profil" class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] hover:bg-[#252525] transition-colors">Profil</a></li>
+        <li><a href="#parcours" data-nav="parcours" class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] hover:bg-[#252525] transition-colors">Parcours</a></li>
+        <li><a href="#competences" data-nav="competences" class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] hover:bg-[#252525] transition-colors">Compétences</a></li>
+        <li><a href="#realisations" data-nav="realisations" class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] hover:bg-[#252525] transition-colors">Projets</a></li>
+        <li><a href="#contact" data-nav="contact" class="mobile-nav-link block px-4 py-3 rounded-lg text-sm font-medium text-[#9E9EA4] hover:text-[#F5F5F7] hover:bg-[#252525] transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       VUE PRINCIPALE DU PORTFOLIO
+       ========================================================= -->
+  <div id="home-view" class="relative z-10 flex-1 w-full overflow-x-clip">
+    <main class="w-full max-w-5xl mx-auto px-5 sm:px-8">
+
+      <!-- 1. SECTION ACCUEIL (HERO) -->
+      <section id="accueil" class="pt-20 pb-20 sm:pt-28 sm:pb-24 relative">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-3 mb-5">
+            <span class="w-5 h-px bg-[#E62E8A]"></span>
+            <span class="font-mono text-xs tracking-[0.22em] uppercase text-[#D4FF00]">PORTFOLIO</span>
+          </div>
+
+          <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight text-[#F5F5F7] leading-[1.06]">
+            Asma N'GHAM<span class="text-[#E62E8A]">.</span>
+          </h1>
+
+          <p class="mt-5 font-display font-medium text-xl sm:text-2xl md:text-[1.75rem] text-[#F5F5F7]/85 leading-snug">
+            Étudiante en informatique<br>Développement d'applications
+          </p>
+
+          <div class="mt-6 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg border border-[#D4FF00]/35 bg-[#D4FF00]/[0.06]">
+            <span class="font-mono text-xs sm:text-sm text-[#D4FF00] tracking-wide">1re année BTS SIO • Option SLAM</span>
+          </div>
+
+          <!-- Boutons d'action -->
+          <div class="mt-9 flex flex-wrap items-center gap-3.5">
+            <a href="#realisations" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#E62E8A] text-white text-sm font-medium border border-[#E62E8A] hover:bg-[#ef3a95] hover:-translate-y-0.5 transition-all">
+              <span>Voir mes projets</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+
+            <button type="button" id="cv-btn" disabled aria-disabled="true" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-transparent text-[#9E9EA4] text-sm font-medium border border-white/[0.12] opacity-55 cursor-not-allowed">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5M9 13h6M9 17h4"/>
+              </svg>
+              <span>Voir mon CV</span>
+            </button>
+
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-transparent text-[#F5F5F7] text-sm font-medium border border-white/[0.14] hover:border-[#D4FF00]/65 hover:text-[#D4FF00] hover:bg-[#D4FF00]/[0.05] hover:-translate-y-0.5 transition-all">
+              <span>Me contacter</span>
+            </a>
+          </div>
+
+          <p class="mt-3.5 text-xs font-mono text-[#9E9EA4]">
+            Le CV au format PDF sera ajouté ici.
+          </p>
+        </div>
+
+        <!-- Filet horizontal 1px rose fuchsia bord à bord croisant la ligne verticale jaune fluo -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-px bg-[#E62E8A]/[0.38] pointer-events-none" aria-hidden="true"></div>
+      </section>
+
+      <!-- 2. SECTION PROFIL -->
+      <section id="profil" class="py-20 sm:py-24 scroll-mt-16">
+        <div class="mb-10">
+          <div class="inline-flex items-center gap-2.5 mb-2.5">
+            <span class="w-5 h-px bg-[#E62E8A]"></span>
+            <span class="font-mono text-xs tracking-[0.2em] uppercase text-[#D4FF00]">Profil</span>
+          </div>
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl text-[#F5F5F7] tracking-tight">Qui je suis</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Texte de présentation -->
+          <div class="lg:col-span-7 space-y-5 text-[#F5F5F7]/80 text-[15.5px] leading-relaxed">
+            <p>
+              Actuellement en première année de <strong class="text-[#F5F5F7] font-semibold">BTS SIO</strong> (Services Informatiques aux Organisations), option SLAM (Solutions Logicielles et Applications Métiers), préparé à distance au CNED, je me forme au développement d'applications et à la programmation.
+            </p>
+            <p>
+              Auparavant étudiante en licence de <strong class="text-[#F5F5F7] font-semibold">Langues Étrangères Appliquées</strong> (anglais-arabe) à distance à l'Université de Lorraine, ce parcours m'a permis de développer mes compétences en rédaction, synthèse et recherche documentaire, tout en renforçant mon autonomie, ma rigueur, mon organisation et ma capacité d'adaptation.
+            </p>
+            <p>
+              Souhaitant approfondir mes connaissances en informatique, j'envisage de poursuivre mes études en L3 Informatique, puis en Master spécialisé en cybersécurité, avec un intérêt particulier pour la <strong class="text-[#F5F5F7] font-semibold">sécurité applicative</strong>.
+            </p>
+          </div>
+
+          <!-- Encadré latéral Recherche de stage -->
+          <aside class="lg:col-span-5 bg-[#252525]/85 backdrop-blur-sm rounded-xl p-6 sm:p-7 border border-[#E62E8A]/35 border-l-2 border-l-[#D4FF00]">
+            <div class="flex items-center justify-between gap-2 mb-3.5">
+              <h3 class="font-mono text-xs tracking-[0.16em] uppercase text-[#D4FF00] font-semibold">Recherche de stage</h3>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#E62E8A]"></span>
+            </div>
+            <p class="text-sm sm:text-[15px] leading-relaxed text-[#F5F5F7]/90">
+              Je suis actuellement à la recherche d'un stage de <strong class="text-[#F5F5F7] font-semibold">4 à 5 semaines</strong> dans le domaine du développement d'applications ou du développement web, à réaliser entre <strong class="text-[#F5F5F7] font-semibold">mai et août 2027</strong>.
+            </p>
+            <div class="mt-5 pt-4 border-t border-white/[0.08] flex flex-wrap gap-2">
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[#1E1E1E] border border-white/[0.08] text-[#9E9EA4]">Option SLAM</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[#1E1E1E] border border-white/[0.08] text-[#9E9EA4]">Mai – Août 2027</span>
+              <span class="font-mono text-[11px] px-2.5 py-1 rounded-md bg-[#1E1E1E] border border-white/[0.08] text-[#9E9EA4]">4 à 5 semaines</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Séparateur 1px sobre -->
+      <div class="h-px w-full bg-white/[0.08]"></div>
+
+      <!-- 3. SECTION PARCOURS (FRISE CHRONOLOGIQUE CENTRALE) -->
+      <section id="parcours" class="py-20 sm:py-24 scroll-mt-16">
+        <div class="mb-12">
+          <div class="inline-flex items-center gap-2.5 mb-2.5">
+            <span class="w-5 h-px bg-[#E62E8A]"></span>
+            <span class="font-mono text-xs tracking-[0.2em] uppercase text-[#D4FF00]">Formation &amp; projet</span>
+          </div>
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl text-[#F5F5F7] tracking-tight">Parcours</h2>
+        </div>
+
+        <div class="relative">
+          <!-- Trait vertical central 1px ultra-fin dégradé jaune fluo vers rose fuchsia -->
+          <div class="absolute top-0 bottom-0 left-3 md:left-1/2 md:-translate-x-1/2 w-px bg-gradient-to-b from-[#D4FF00]/50 via-[#E62E8A]/40 to-white/[0.08]" aria-hidden="true"></div>
+          <ol id="timeline-list" class="space-y-8 sm:space-y-10 relative"></ol>
+        </div>
+      </section>
+
+      <!-- Séparateur 1px sobre -->
+      <div class="h-px w-full bg-white/[0.08]"></div>
+
+      <!-- 4. SECTION COMPÉTENCES -->
+      <section id="competences" class="py-20 sm:py-24 scroll-mt-16">
+        <div class="mb-12">
+          <div class="inline-flex items-center gap-2.5 mb-2.5">
+            <span class="w-5 h-px bg-[#E62E8A]"></span>
+            <span class="font-mono text-xs tracking-[0.2em] uppercase text-[#D4FF00]">En cours d'acquisition</span>
+          </div>
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl text-[#F5F5F7] tracking-tight">Compétences</h2>
+        </div>
+
+        <div id="skills-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-10"></div>
+      </section>
+
+      <!-- Séparateur 1px sobre -->
+      <div class="h-px w-full bg-white/[0.08]"></div>
+
+      <!-- 5. SECTION PROJETS (RÉALISATIONS) -->
+      <section id="realisations" class="py-20 sm:py-24 scroll-mt-16">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+          <div>
+            <div class="inline-flex items-center gap-2.5 mb-2.5">
+              <span class="w-5 h-px bg-[#E62E8A]"></span>
+              <span class="font-mono text-xs tracking-[0.2em] uppercase text-[#D4FF00]">Réalisations</span>
+            </div>
+            <h2 class="font-display font-semibold text-3xl sm:text-4xl text-[#F5F5F7] tracking-tight">Projets</h2>
+          </div>
+
+          <!-- Filtres épurés -->
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrer les projets">
+            <button type="button" data-filter="all" class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs border transition-all">Tous (8)</button>
+            <button type="button" data-filter="scolaire" class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs border transition-all">Scolaires (6)</button>
+            <button type="button" data-filter="pro" class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs border transition-all">Professionnels (2)</button>
+          </div>
+        </div>
+
+        <!-- Sous-section Projets scolaires -->
+        <div id="block-scolaire" class="mb-14">
+          <div class="flex items-center gap-4 mb-6">
+            <h3 class="font-mono text-xs sm:text-sm uppercase tracking-[0.14em] text-[#E62E8A] font-medium whitespace-nowrap">Projets scolaires</h3>
+            <div class="h-px flex-1 bg-white/[0.08]"></div>
+          </div>
+          <div id="cards-scolaire" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </div>
+
+        <!-- Sous-section Projets professionnels -->
+        <div id="block-pro">
+          <div class="flex items-center gap-4 mb-6">
+            <h3 class="font-mono text-xs sm:text-sm uppercase tracking-[0.14em] text-[#D4FF00] font-medium whitespace-nowrap">Projets professionnels</h3>
+            <div class="h-px flex-1 bg-white/[0.08]"></div>
+          </div>
+          <div id="cards-pro" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </div>
+      </section>
+
+      <!-- Séparateur 1px sobre -->
+      <div class="h-px w-full bg-white/[0.08]"></div>
+
+      <!-- 6. SECTION CONTACT -->
+      <section id="contact" class="py-20 sm:py-24 scroll-mt-16">
+        <div class="mb-12">
+          <div class="inline-flex items-center gap-2.5 mb-2.5">
+            <span class="w-5 h-px bg-[#E62E8A]"></span>
+            <span class="font-mono text-xs tracking-[0.2em] uppercase text-[#D4FF00]">Contact</span>
+          </div>
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl text-[#F5F5F7] tracking-tight">Me joindre</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Liste des coordonnées -->
+          <div id="contact-list" class="lg:col-span-5 space-y-3"></div>
+
+          <!-- Formulaire de contact -->
+          <form id="contact-form" novalidate class="lg:col-span-7 bg-[#252525]/85 backdrop-blur-sm border border-white/[0.08] rounded-xl p-6 sm:p-7 space-y-5">
+            <!-- Champ anti-spam invisible (les robots le remplissent, pas les humains) -->
+            <input type="checkbox" name="botcheck" id="f-botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+            <div>
+              <label for="f-name" class="block font-mono text-xs uppercase tracking-wider text-[#9E9EA4] mb-2">Nom</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Votre nom ou entreprise" required
+                class="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-white/[0.08] text-sm text-[#F5F5F7] placeholder-[#9E9EA4]/45 focus:outline-none focus:border-[#E62E8A] transition-colors">
+            </div>
+            <div>
+              <label for="f-email" class="block font-mono text-xs uppercase tracking-wider text-[#9E9EA4] mb-2">Adresse mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="exemple@domaine.fr" required
+                class="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-white/[0.08] text-sm text-[#F5F5F7] placeholder-[#9E9EA4]/45 focus:outline-none focus:border-[#E62E8A] transition-colors">
+            </div>
+            <div>
+              <label for="f-msg" class="block font-mono text-xs uppercase tracking-wider text-[#9E9EA4] mb-2">Message</label>
+              <textarea id="f-msg" name="message" rows="5" placeholder="Votre message concernant une opportunité de stage ou un projet..." required
+                class="w-full px-4 py-3 rounded-lg bg-[#1E1E1E] border border-white/[0.08] text-sm text-[#F5F5F7] placeholder-[#9E9EA4]/45 focus:outline-none focus:border-[#E62E8A] transition-colors resize-y min-h-[120px]"></textarea>
+            </div>
+            <div class="pt-1">
+              <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#E62E8A] text-white text-sm font-medium border border-[#E62E8A] hover:bg-[#ef3a95] hover:-translate-y-0.5 transition-all">
+                <span>Envoyer le message</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+            <p id="form-status" role="status" class="text-xs font-mono min-h-[1.25rem]"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- =========================================================
+       VUE DÉTAIL D'UN PROJET (Route interactive #realisation-N)
+       ========================================================= -->
+  <main id="detail-view" class="hidden relative z-10 flex-1 w-full max-w-5xl mx-auto px-5 sm:px-8 py-12 sm:py-16"></main>
+
+  <!-- =========================================================
+       PIED DE PAGE SOBRE
+       ========================================================= -->
+  <footer class="relative z-10 mt-8 border-t border-[#E62E8A]/35 bg-[#1E1E1E]/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#9E9EA4]">
+      <span>© Asma N'GHAM · Portfolio BTS SIO</span>
+      <a href="#accueil" id="footer-top" class="inline-flex items-center gap-2 text-[#9E9EA4] hover:text-[#D4FF00] transition-colors">
+        <span>Haut de page</span>
+        <span class="text-[#D4FF00]">↑</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       MODALE "EN SAVOIR PLUS" (BTS SIO – OPTION SLAM)
+       ========================================================= -->
+  <div id="bts-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-[#252525] border border-white/[0.1] border-t-2 border-t-[#D4FF00] rounded-xl max-w-lg w-full p-6 sm:p-7 shadow-2xl shadow-black/60 relative">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <span class="font-mono text-[11px] uppercase tracking-[0.16em] text-[#E62E8A]">Formation actuelle</span>
+          <h3 id="modal-title" class="font-display font-semibold text-xl text-[#F5F5F7] mt-1">BTS SIO – Option SLAM</h3>
+        </div>
+        <button type="button" id="modal-close" aria-label="Fermer la fenêtre" class="p-2 rounded-lg text-[#9E9EA4] hover:text-[#D4FF00] hover:bg-white/5 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="space-y-4 text-sm leading-relaxed text-[#F5F5F7]/85">
+        <p>
+          Le <strong class="text-[#F5F5F7]">BTS Services Informatiques aux Organisations (SIO)</strong> forme des techniciens supérieurs spécialisés dans le développement d'applications (option SLAM) ou dans la gestion des systèmes et réseaux (option SISR).
+        </p>
+        <p>
+          L'option <strong class="text-[#D4FF00]">SLAM (Solutions Logicielles et Applications Métiers)</strong> est orientée vers le développement, la maintenance et l'évolution d'applications informatiques, les bases de données, les technologies web, le génie logiciel et la cybersécurité applicative.
+        </p>
+      </div>
+      <div class="mt-6 pt-4 border-t border-white/[0.08] flex justify-end">
+        <button type="button" id="modal-ok" class="px-4 py-2 rounded-lg text-xs font-mono uppercase tracking-wider bg-[#1E1E1E] border border-[#D4FF00]/45 text-[#D4FF00] hover:bg-[#D4FF00]/10 transition-colors">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast discrète (remplace alert()) -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 pointer-events-none opacity-0 translate-y-2 transition-all duration-200 bg-[#252525] border border-[#D4FF00]/50 text-[#F5F5F7] px-4 py-2.5 rounded-lg shadow-xl font-mono text-xs flex items-center gap-2.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#D4FF00]"></span>
+    <span id="toast-msg">Copié dans le presse-papiers</span>
+  </div>
+
+  <!-- =========================================================
+       LOGIQUE APPLICATIVE & DONNÉES DU PORTFOLIO
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* --- DONNÉES DU PARCOURS --- */
+      const PARCOURS = [
+        {
+          date: "Sept. 2026 – présent",
+          titre: "BTS SIO, Services Informatiques aux Organisations, option SLAM",
+          lieu: "CNED, Centre National d'Enseignement à Distance",
+          presentation: "L'option SLAM (Solutions Logicielles et Applications Métiers) forme au développement et à la maintenance d'applications : conception, programmation, bases de données, tests et déploiement.",
+          badge: "Formation actuelle",
+          badgeType: "current",
+          hasModal: true
+        },
+        {
+          date: "Juin 2026",
+          titre: "Licence 2 LEA, Langues Étrangères Appliquées, anglais-arabe",
+          lieu: "Université de Lorraine, Nancy (enseignement à distance) · DEUG obtenu",
+          presentation: "Langues appliquées au monde de l'entreprise, communication professionnelle et outils numériques."
+        },
+        {
+          date: "Sept. 2025 – mars 2026",
+          titre: "E-commerce : boutique en ligne de prêt-à-porter",
+          lieu: "Projet entrepreneurial",
+          presentation: "Développement d'un projet e-commerce : étude de marché et analyse des tendances, recherche et sélection de fournisseurs, négociation et stratégie d'achats, élaboration de stratégies marketing et commerciales, création de l'identité visuelle de la marque (logo, charte graphique).",
+          badge: "Projet",
+          badgeType: "projet"
+        },
+        {
+          date: "Sept. 2023 – févr. 2024",
+          titre: "Formation en graphisme, spécialisation identité visuelle",
+          lieu: "ByOfee, e-learning",
+          presentation: "Conception d'identités visuelles, création de supports print et digitaux, Photoshop, Illustrator et InDesign."
+        },
+        {
+          date: "Sept. 2022 – juin 2023",
+          titre: "Licence LLCER, Langues, Littératures et Civilisations Étrangères et Régionales, espagnol",
+          lieu: "Université Sorbonne Paris Nord, Villetaneuse",
+          presentation: ""
+        },
+        {
+          date: "Sept. 2021 – juil. 2022",
+          titre: "Baccalauréat Ressources Humaines et Communication",
+          lieu: "Lycée Jacques Feyder, Épinay-sur-Seine",
+          presentation: ""
+        }
+      ];
+
+      /* --- ICÔNES VECTORIELLES SUR MESURE / SECOURS --- */
+      const CUSTOM_SVG = {
+        office: '<svg class="w-10 h-10" viewBox="0 0 36 36" fill="none"><path d="M7 25.5V10.8L22 5l7 2.2v21.6L22 31 7 25.5zm15 1.8V10.2l-9 2.6v10.2l9 4.3z" fill="#EB3C00"/></svg>',
+        adobe: '<svg class="w-10 h-10" viewBox="0 0 36 36" fill="none"><path d="M22.2 5H31v26L22.2 5zM13.8 5H5v26L13.8 5zM18 14.8L23.5 31h-4l-1.7-5.2h-4.2L18 14.8z" fill="#FF2B2B"/></svg>',
+        canva: '<svg class="w-10 h-10" viewBox="0 0 36 36" fill="none"><defs><linearGradient id="canvaG" x1="4" y1="4" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#00C4CC"/><stop offset="1" stop-color="#7D2AE8"/></linearGradient></defs><circle cx="18" cy="18" r="14" fill="url(#canvaG)"/><path d="M22.2 13.6c-.8-.9-1.9-1.4-3.3-1.4-3 0-5.4 2.7-5.4 6.1 0 3.2 2.1 5.5 5 5.5 1.7 0 3.1-.8 4.1-2.2" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/></svg>',
+        procreate: '<svg class="w-10 h-10" viewBox="0 0 36 36" fill="none"><defs><linearGradient id="procG" x1="6" y1="30" x2="30" y2="6" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5E1A"/><stop offset="0.38" stop-color="#FF299C"/><stop offset="0.72" stop-color="#4D7CFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs><rect x="3" y="3" width="30" height="30" rx="8" fill="#18181B" stroke="rgba(255,255,255,0.10)"/><path d="M9 27c2-7 8-10 13-13 3.5-2 5-4.5 5-6 0 4.5-1.5 9.5-6.5 13-4.5 3.2-9 3.5-11.5 6z" fill="url(#procG)"/></svg>',
+        fallback: '<svg class="w-8 h-8 text-[#D4FF00]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3m-4-8l-2 10"/></svg>'
+      };
+
+      const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
+
+      /* --- DONNÉES DES COMPÉTENCES --- */
+      const COMPETENCES = [
+        {
+          categorie: "Développement Web & Applications",
+          items: [
+            { nom: "C#", img: DEVICON + "csharp/csharp-original.svg" },
+            { nom: "Python", img: DEVICON + "python/python-original.svg" },
+            { nom: "Java", img: DEVICON + "java/java-original.svg" },
+            { nom: "PHP", img: DEVICON + "php/php-original.svg" },
+            { nom: "HTML", img: DEVICON + "html5/html5-original.svg" },
+            { nom: "CSS", img: DEVICON + "css3/css3-original.svg" },
+            { nom: "JavaScript", img: DEVICON + "javascript/javascript-original.svg" },
+            { nom: "SQL", img: DEVICON + "azuresqldatabase/azuresqldatabase-original.svg" }
+          ]
+        },
+        {
+          categorie: "Outils & environnements",
+          items: [
+            { nom: "Git & GitHub", img: DEVICON + "git/git-original.svg" },
+            { nom: "Visual Studio Code", img: DEVICON + "vscode/vscode-original.svg" },
+            { nom: "NetBeans", img: DEVICON + "netbeans/netbeans-original.svg" },
+            { nom: "Eclipse", img: DEVICON + "eclipse/eclipse-original.svg" },
+            { nom: "PyCharm", img: DEVICON + "pycharm/pycharm-original.svg" },
+            { nom: "WampServer", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/WampServer-logo.png" },
+            { nom: "VirtualBox", img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png" },
+            { nom: "WordPress", img: DEVICON + "wordpress/wordpress-plain.svg", invertDark: true }
+          ]
+        },
+        {
+          categorie: "Bases de données",
+          items: [
+            { nom: "MySQL", img: DEVICON + "mysql/mysql-original.svg" },
+            { nom: "PostgreSQL", img: DEVICON + "postgresql/postgresql-original.svg" },
+            { nom: "MongoDB", img: DEVICON + "mongodb/mongodb-original.svg" }
+          ]
+        },
+        {
+          categorie: "Méthodes de conception",
+          items: [
+            { nom: "Merise", img: "https://upload.wikimedia.org/wikipedia/commons/2/26/Merise_logo.png" },
+            { nom: "UML", img: DEVICON + "unifiedmodelinglanguage/unifiedmodelinglanguage-original.svg" }
+          ]
+        },
+        {
+          categorie: "Création & bureautique",
+          items: [
+            { nom: "Pack Office", svg: "office" },
+            { nom: "Suite Adobe", svg: "adobe" },
+            { nom: "Canva", svg: "canva" },
+            { nom: "Procreate", svg: "procreate" }
+          ]
+        }
+      ];
+
+      /* --- DONNÉES DES PROJETS --- */
+      const PROJETS = [
+        {
+          id: 1,
+          type: "pro",
+          titre: "Gestion des absences",
+          date: "2027 - à venir",
+          desc: "Développement d'une <strong class='text-[#F5F5F7] font-semibold'>application de bureau</strong> pour gérer les absences du personnel d'une médiathèque, avec <strong class='text-[#F5F5F7] font-semibold'>accès authentifié</strong>.",
+          tech: ["C#", "MySQL"],
+          iconType: "csharp",
+          github: "https://github.com/asma-ngh",
+          cadre: "À renseigner : contexte, structure d'accueil et objectifs du projet."
+        },
+        {
+          id: 2,
+          type: "pro",
+          titre: "Projet de stage",
+          date: "2027 - à venir",
+          desc: "Projet qui sera réalisé durant le stage de première année de BTS SIO.",
+          tech: [],
+          iconType: "stage",
+          github: "https://github.com/asma-ngh",
+          cadre: "Stage de 4 à 5 semaines en développement d'applications ou développement web, à réaliser entre mai et août 2027."
+        },
+        {
+          id: 3,
+          type: "scolaire",
+          titre: "Contacts",
+          date: "2026 - à venir",
+          desc: "Création d'une <strong class='text-[#F5F5F7] font-semibold'>application de bureau</strong> pour mémoriser les informations de contacts personnels et professionnels, avec persistance des données par sérialisation et <strong class='text-[#F5F5F7] font-semibold'>gestion dynamique des contacts</strong> dans une liste.",
+          tech: ["C#", "Sérialisation"],
+          iconType: "csharp",
+          github: "https://github.com/asma-ngh",
+          cadre: "Projet scolaire de BTS SIO option SLAM. Contexte et consignes à renseigner."
+        },
+        {
+          id: 4,
+          type: "scolaire",
+          titre: "Site vitrine de casques de moto",
+          date: "2026 - à venir",
+          desc: "Création et évolution d'un <strong class='text-[#F5F5F7] font-semibold'>site vitrine</strong> de présentation de casques de moto, soutenu par une base de données : respect du <strong class='text-[#F5F5F7] font-semibold'>RGPD</strong>, <strong class='text-[#F5F5F7] font-semibold'>déploiement</strong>, <strong class='text-[#F5F5F7] font-semibold'>référencement</strong>.",
+          tech: ["HTML", "CSS", "JavaScript", "MySQL"],
+          iconType: "web",
+          github: "https://github.com/asma-ngh",
+          cadre: "Projet scolaire de BTS SIO option SLAM. Contexte et consignes à renseigner."
+        },
+        {
+          id: 5,
+          type: "scolaire",
+          titre: "Le site de mon client",
+          date: "2026 - à venir",
+          desc: "Découverte de <strong class='text-[#F5F5F7] font-semibold'>WordPress</strong> à travers la création des bases d'un <strong class='text-[#F5F5F7] font-semibold'>site e-commerce</strong>.",
+          tech: ["WordPress", "MySQL", "WooCommerce"],
+          iconType: "wordpress",
+          github: "https://github.com/asma-ngh",
+          cadre: "Projet scolaire de BTS SIO option SLAM. Contexte et consignes à renseigner."
+        },
+        {
+          id: 6,
+          type: "scolaire",
+          titre: "Centre de formation informatique",
+          date: "2026 - à venir",
+          desc: "Évolution d'un <strong class='text-[#F5F5F7] font-semibold'>site vitrine</strong> de présentation d'un centre de formation, avec ajout des <strong class='text-[#F5F5F7] font-semibold'>CGU</strong>, formulaire de contact, <strong class='text-[#F5F5F7] font-semibold'>droit à la portabilité</strong>, liste de diffusion, campagne d'emailing, <strong class='text-[#F5F5F7] font-semibold'>référencement</strong> et suivi de la <strong class='text-[#F5F5F7] font-semibold'>visibilité du site</strong>.",
+          tech: ["WordPress", "MySQL"],
+          iconType: "web",
+          github: "https://github.com/asma-ngh",
+          cadre: "Projet scolaire de BTS SIO option SLAM. Contexte et consignes à renseigner."
+        },
+        {
+          id: 7,
+          type: "scolaire",
+          titre: "Jeu de combat 2D",
+          date: "2027 - à venir",
+          desc: "Création d'un <strong class='text-[#F5F5F7] font-semibold'>jeu 2D multijoueur</strong> sur une plateforme où plusieurs joueurs s'affrontent. Gestion des attaques (tir d'une boule de feu) dans un <strong class='text-[#F5F5F7] font-semibold'>thread</strong> indépendant.",
+          tech: ["Java", "Thread", "Socket", "MVC"],
+          iconType: "java",
+          github: "https://github.com/asma-ngh",
+          cadre: "Projet scolaire de BTS SIO option SLAM. Contexte et consignes à renseigner."
+        },
+        {
+          id: 8,
+          type: "scolaire",
+          titre: "Habilitations",
+          date: "2027 - à venir",
+          desc: "Création d'une <strong class='text-[#F5F5F7] font-semibold'>application de bureau</strong> pour gérer les habilitations aux ressources, pour les développeurs d'une entreprise, avec <strong class='text-[#F5F5F7] font-semibold'>accès authentifié</strong> et structure <strong class='text-[#F5F5F7] font-semibold'>MVC</strong>.",
+          tech: ["C#", "MySQL"],
+          iconType: "csharp",
+          github: "https://github.com/asma-ngh",
+          cadre: "Projet scolaire de BTS SIO option SLAM. Contexte et consignes à renseigner."
+        }
+      ];
+
+      /* --- COORDONNÉES DE CONTACT (AVEC LIENS LINKEDIN & GITHUB OFFICIELS) --- */
+      const CONTACTS = [
+        { label: "Ville", value: "Villetaneuse (Seine-Saint-Denis)", copyable: false },
+        { label: "Téléphone mobile", value: "06 58 19 67 07", copyable: true },
+        { label: "Adresse mail", value: "asmangham9@gmail.com", copyable: true },
+        { label: "LinkedIn", value: "linkedin.com/in/asma-n-7987793b1", href: "https://www.linkedin.com/in/asma-n-7987793b1", copyable: true },
+        { label: "GitHub", value: "github.com/asma-ngh", href: "https://github.com/asma-ngh", copyable: true }
+      ];
+
+      /* --- RENDU DE LA FRISE PARCOURS --- */
+      function renderTimeline() {
+        const container = document.getElementById('timeline-list');
+        if (!container) return;
+
+        container.innerHTML = PARCOURS.map((item, idx) => {
+          const isLeftCardOnDesktop = idx % 2 === 1;
+          const isCurrent = item.badgeType === 'current';
+
+          let badgeHTML = '';
+          if (item.badge) {
+            if (isCurrent) {
+              badgeHTML = `<span class="inline-block font-mono text-[11px] px-2.5 py-0.5 rounded border border-[#D4FF00]/45 bg-[#D4FF00]/10 text-[#D4FF00] mb-1">${item.badge}</span>`;
+            } else {
+              badgeHTML = `<span class="inline-block font-mono text-[11px] px-2.5 py-0.5 rounded border border-[#E62E8A]/45 bg-[#E62E8A]/10 text-[#E62E8A] mb-1">${item.badge}</span>`;
+            }
+          }
+
+          const dateBadgeClass = isCurrent
+            ? 'border-[#D4FF00]/50 bg-[#D4FF00]/10 text-[#D4FF00]'
+            : 'border-white/[0.1] bg-[#252525] text-[#9E9EA4]';
+
+          const dotClass = isCurrent
+            ? 'bg-[#D4FF00] border-[#D4FF00] shadow-[0_0_12px_rgba(212,255,0,0.85)]'
+            : 'bg-[#1E1E1E] border-[#E62E8A]';
+
+          const modalBtn = item.hasModal
+            ? `<button type="button" id="open-bts-modal" class="mt-3 w-full py-2 px-3 rounded-lg font-mono text-xs border border-white/[0.12] text-[#F5F5F7] hover:border-[#D4FF00]/65 hover:text-[#D4FF00] hover:bg-[#D4FF00]/[0.06] transition-all">En savoir plus</button>`
+            : '';
+
+          const cardContent = `
+            <article class="bg-[#252525]/85 backdrop-blur-sm border border-white/[0.08] hover:border-[#E62E8A]/45 rounded-xl p-5 sm:p-6 transition-all duration-200 hover:-translate-y-0.5">
+              ${badgeHTML}
+              <h3 class="font-sans font-semibold text-base text-[#F5F5F7] leading-snug">${item.titre}</h3>
+              <p class="mt-1.5 text-xs sm:text-[13px] text-[#9E9EA4]">${item.lieu}</p>
+              ${item.presentation ? `<p class="mt-3 text-sm text-[#F5F5F7]/75 leading-relaxed">${item.presentation}</p>` : ''}
+              ${modalBtn}
+            </article>
+          `;
+
+          return `
+            <li class="relative pl-9 md:pl-0 md:grid md:grid-cols-[1fr_32px_1fr] md:items-center">
+              <!-- Point central sur la ligne -->
+              <span class="absolute left-3 -translate-x-1/2 top-5 md:static md:translate-x-0 md:col-start-2 md:row-start-1 md:justify-self-center w-2.5 h-2.5 rounded-full border-[1.5px] ${dotClass} z-10" aria-hidden="true"></span>
+
+              <!-- Date -->
+              <div class="mb-2.5 md:mb-0 md:row-start-1 ${isLeftCardOnDesktop ? 'md:col-start-3 md:pl-6 md:text-left' : 'md:col-start-1 md:pr-6 md:text-right'}">
+                <span class="inline-block font-mono text-xs px-3 py-1 rounded border ${dateBadgeClass}">${item.date}</span>
+              </div>
+
+              <!-- Carte -->
+              <div class="md:row-start-1 ${isLeftCardOnDesktop ? 'md:col-start-1 md:pr-2' : 'md:col-start-3 md:pl-2'}">
+                ${cardContent}
+              </div>
+            </li>
+          `;
+        }).join('');
+      }
+
+      /* --- RENDU DES COMPÉTENCES --- */
+      function renderSkills() {
+        const grid = document.getElementById('skills-grid');
+        if (!grid) return;
+
+        grid.innerHTML = COMPETENCES.map((group) => {
+          const tilesHTML = group.items.map((item) => {
+            let visualHTML = '';
+            if (item.svg && CUSTOM_SVG[item.svg]) {
+              visualHTML = CUSTOM_SVG[item.svg];
+            } else if (item.img) {
+              const invertClass = item.invertDark ? 'brightness-0 invert opacity-90' : '';
+              visualHTML = `<img src="${item.img}" alt="${item.nom}" loading="lazy" class="w-10 h-10 object-contain ${invertClass}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="hidden">${CUSTOM_SVG.fallback}</span>`;
+            } else {
+              visualHTML = CUSTOM_SVG.fallback;
+            }
+
+            return `
+              <div class="bg-[#252525]/85 backdrop-blur-sm border border-white/[0.08] hover:border-[#D4FF00]/50 hover:bg-[#2B2B2B] rounded-xl p-4 flex flex-col items-center justify-center gap-3 text-center aspect-square sm:aspect-[1/0.92] transition-all duration-200 hover:-translate-y-0.5 group">
+                <div class="w-11 h-11 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+                  ${visualHTML}
+                </div>
+                <span class="text-xs sm:text-[13px] font-medium text-[#F5F5F7]/90 leading-tight">${item.nom}</span>
+              </div>
+            `;
+          }).join('');
+
+          return `
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <h3 class="font-sans font-semibold text-base text-[#F5F5F7] whitespace-nowrap">${group.categorie}</h3>
+                <div class="h-px flex-1 bg-white/[0.08]"></div>
+              </div>
+              <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 gap-3">
+                ${tilesHTML}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      /* --- ICÔNES DE VIGNETTE DES PROJETS --- */
+      function getProjectThumbSVG(type) {
+        if (type === 'csharp') {
+          return `<img src="${DEVICON}csharp/csharp-original.svg" alt="" class="w-11 h-11 object-contain" onerror="this.style.display='none';">`;
+        }
+        if (type === 'java') {
+          return `<img src="${DEVICON}java/java-original.svg" alt="" class="w-11 h-11 object-contain" onerror="this.style.display='none';">`;
+        }
+        if (type === 'wordpress') {
+          return `<img src="${DEVICON}wordpress/wordpress-plain.svg" alt="" class="w-11 h-11 object-contain brightness-0 invert opacity-90" onerror="this.style.display='none';">`;
+        }
+        if (type === 'web') {
+          return `<svg class="w-10 h-10 text-[#E62E8A]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg>`;
+        }
+        return `<svg class="w-10 h-10 text-[#D4FF00]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/><path stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5M9 13h6M9 17h4"/></svg>`;
+      }
+
+      /* --- RENDU DES CARTES PROJETS --- */
+      function buildProjectCard(p) {
+        const isPro = p.type === 'pro';
+        const thumbBorder = isPro ? 'border-b-[#D4FF00]/30' : 'border-b-[#E62E8A]/30';
+        const tagsHTML = p.tech.length
+          ? `<div class="flex flex-wrap gap-1.5 pt-2">
+              ${p.tech.map(t => `<span class="font-mono text-[11px] px-2.5 py-0.5 rounded border border-[#E62E8A]/40 bg-[#E62E8A]/[0.09] text-[#F5F5F7]/90">${t}</span>`).join('')}
+            </div>`
+          : '';
+
+        return `
+          <article class="bg-[#252525]/85 backdrop-blur-sm border border-white/[0.08] hover:border-[#E62E8A]/50 rounded-xl overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1">
+            <div class="h-28 bg-[#191919] border-b ${thumbBorder} flex items-center justify-center relative">
+              ${getProjectThumbSVG(p.iconType)}
+            </div>
+            <div class="p-5 flex-1 flex flex-col gap-3">
+              <span class="self-start font-mono text-[11px] px-2.5 py-0.5 rounded border border-[#D4FF00]/40 bg-[#D4FF00]/[0.08] text-[#D4FF00]">
+                ${p.date}
+              </span>
+              <h3 class="font-sans font-semibold text-base text-[#F5F5F7]">${p.titre}</h3>
+              <p class="text-sm text-[#9E9EA4] leading-relaxed">${p.desc}</p>
+              ${tagsHTML}
+              <div class="mt-auto pt-3.5 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                <a href="${p.github}" target="_blank" rel="noopener" class="text-[#D4FF00] hover:text-[#E62E8A] transition-colors">
+                  Projet sur GitHub ↗
+                </a>
+                <a href="#realisation-${p.id}" class="text-[#F5F5F7]/85 hover:text-[#D4FF00] transition-colors">
+                  Plus d'informations →
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderProjects() {
+        const scolContainer = document.getElementById('cards-scolaire');
+        const proContainer = document.getElementById('cards-pro');
+        if (scolContainer) {
+          scolContainer.innerHTML = PROJETS.filter(p => p.type === 'scolaire').map(buildProjectCard).join('');
+        }
+        if (proContainer) {
+          proContainer.innerHTML = PROJETS.filter(p => p.type === 'pro').map(buildProjectCard).join('');
+        }
+      }
+
+      /* --- RENDU DE LA VUE DÉTAIL PROJET (#realisation-N) --- */
+      function renderDetailView(id) {
+        const p = PROJETS.find(item => item.id === id);
+        const detailView = document.getElementById('detail-view');
+        if (!p || !detailView) return false;
+
+        const typeLabel = p.type === 'pro' ? 'Projet professionnel' : 'Projet scolaire';
+        const tagsHTML = p.tech.map(t => `<span class="font-mono text-xs px-2.5 py-1 rounded border border-[#E62E8A]/45 bg-[#E62E8A]/10 text-[#F5F5F7]">${t}</span>`).join('');
+
+        detailView.innerHTML = `
+          <div>
+            <a href="#realisations" class="inline-flex items-center gap-2 font-mono text-xs text-[#D4FF00] hover:text-[#E62E8A] transition-colors mb-8">
+              <span>← Tous les projets</span>
+            </a>
+
+            <div class="pb-7 mb-8 border-b border-[#E62E8A]/35">
+              <div class="inline-flex items-center gap-2.5 mb-2.5">
+                <span class="w-4 h-px bg-[#E62E8A]"></span>
+                <span class="font-mono text-xs uppercase tracking-[0.18em] text-[#D4FF00]">Réalisation · ${typeLabel}</span>
+              </div>
+              <h1 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F5F7] tracking-tight">${p.titre}</h1>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="font-mono text-xs px-3 py-1 rounded border border-[#D4FF00]/45 bg-[#D4FF00]/10 text-[#D4FF00]">${p.date}</span>
+                ${tagsHTML}
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div class="lg:col-span-7 space-y-6">
+                <div class="bg-[#252525]/85 border border-white/[0.08] rounded-xl p-6">
+                  <h2 class="font-sans font-semibold text-base text-[#F5F5F7] mb-2.5">Cadre de réalisation</h2>
+                  <p class="text-sm text-[#9E9EA4] leading-relaxed">${p.cadre}</p>
+                </div>
+
+                <div class="bg-[#252525]/85 border border-white/[0.08] rounded-xl p-6 space-y-4">
+                  <h2 class="font-sans font-semibold text-base text-[#F5F5F7]">Description détaillée</h2>
+                  <p class="text-sm text-[#9E9EA4] leading-relaxed">${p.desc}</p>
+                  <div class="border border-dashed border-[#E62E8A]/45 rounded-lg p-6 text-center text-xs font-mono text-[#9E9EA4]">
+                    Ajoute ici tes captures d'écran, schémas et étapes de réalisation, ou un PDF téléchargeable.
+                  </div>
+                </div>
+
+                <div class="bg-[#252525]/85 border border-white/[0.08] rounded-xl p-6">
+                  <h2 class="font-sans font-semibold text-base text-[#F5F5F7] mb-2">Production</h2>
+                  <p class="text-sm text-[#9E9EA4] mb-4">Lien vers le dépôt GitHub ou vers le site réalisé.</p>
+                  <a href="${p.github}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-mono text-xs border border-[#D4FF00]/45 text-[#D4FF00] hover:bg-[#D4FF00]/10 transition-colors">
+                    Voir le dépôt GitHub ↗
+                  </a>
+                </div>
+              </div>
+
+              <aside class="lg:col-span-5 bg-[#252525]/85 border border-white/[0.08] border-l-2 border-l-[#D4FF00] rounded-xl p-6">
+                <h2 class="font-mono text-xs uppercase tracking-[0.14em] text-[#D4FF00] mb-3">Compétences couvertes du bloc 1</h2>
+                <p class="text-sm text-[#9E9EA4] leading-relaxed">
+                  Les compétences couvertes du référentiel BTS SIO (Bloc 1 — Support et mise à disposition de services informatiques) seront précisées au fur et à mesure de l'avancement du projet.
+                </p>
+              </aside>
+            </div>
+          </div>
+        `;
+        return true;
+      }
+
+      /* --- RENDU DE LA LISTE CONTACT --- */
+      function renderContacts() {
+        const list = document.getElementById('contact-list');
+        if (!list) return;
+
+        list.innerHTML = CONTACTS.map((c) => {
+          const valHTML = c.href
+            ? `<a href="${c.href}" target="_blank" rel="noopener" class="text-sm text-[#F5F5F7] hover:text-[#D4FF00] transition-colors break-all">${c.value}</a>`
+            : `<span class="text-sm text-[#F5F5F7] select-all break-all">${c.value}</span>`;
+
+          const copyBtn = c.copyable
+            ? `<button type="button" data-copy="${c.value}" class="copy-btn shrink-0 px-3 py-1.5 rounded-md font-mono text-xs border border-white/[0.1] text-[#9E9EA4] hover:border-[#D4FF00]/65 hover:text-[#D4FF00] transition-colors">Copier</button>`
+            : '';
+
+          return `
+            <div class="bg-[#252525]/85 backdrop-blur-sm border border-white/[0.08] hover:border-[#D4FF00]/40 rounded-xl px-4 py-3.5 flex items-center justify-between gap-3 transition-colors">
+              <div class="min-w-0">
+                <span class="block font-mono text-[11px] uppercase tracking-[0.12em] text-[#E62E8A] mb-0.5">${c.label}</span>
+                ${valHTML}
+              </div>
+              ${copyBtn}
+            </div>
+          `;
+        }).join('');
+      }
+
+      /* --- FILTRAGE DES PROJETS --- */
+      function setupFilters() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const blockScol = document.getElementById('block-scolaire');
+        const blockPro = document.getElementById('block-pro');
+
+        function applyFilter(filter) {
+          buttons.forEach(btn => {
+            const active = btn.getAttribute('data-filter') === filter;
+            if (active) {
+              btn.className = 'filter-btn px-3.5 py-2 rounded-lg font-mono text-xs border border-[#D4FF00]/60 bg-[#D4FF00]/12 text-[#D4FF00] transition-all';
+            } else {
+              btn.className = 'filter-btn px-3.5 py-2 rounded-lg font-mono text-xs border border-white/[0.1] bg-[#252525] text-[#9E9EA4] hover:text-[#F5F5F7] hover:border-white/25 transition-all';
+            }
+          });
+
+          if (filter === 'all') {
+            blockScol.classList.remove('hidden');
+            blockPro.classList.remove('hidden');
+          } else if (filter === 'scolaire') {
+            blockScol.classList.remove('hidden');
+            blockPro.classList.add('hidden');
+          } else if (filter === 'pro') {
+            blockScol.classList.add('hidden');
+            blockPro.classList.remove('hidden');
+          }
+        }
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => applyFilter(btn.getAttribute('data-filter')));
+        });
+        applyFilter('all');
+      }
+
+      /* --- ROUTAGE ENTRE ACCUEIL ET FICHE PROJET --- */
+      function handleRoute() {
+        const hash = window.location.hash.replace('#', '');
+        const match = /^realisation-(\d+)$/.exec(hash);
+        const homeView = document.getElementById('home-view');
+        const detailView = document.getElementById('detail-view');
+
+        if (match && renderDetailView(parseInt(match[1], 10))) {
+          homeView.classList.add('hidden');
+          detailView.classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        } else {
+          detailView.classList.add('hidden');
+          homeView.classList.remove('hidden');
+          if (hash) {
+            const target = document.getElementById(hash);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      }
+
+      /* --- TOAST & COPIE PRESSE-PAPIERS (Compatible iFrame avec document.execCommand) --- */
+      let toastTimer = null;
+      function showToast(text) {
+        const toast = document.getElementById('toast');
+        const msg = document.getElementById('toast-msg');
+        if (!toast || !msg) return;
+        msg.textContent = text;
+        toast.classList.remove('opacity-0', 'translate-y-2');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          toast.classList.remove('opacity-100', 'translate-y-0');
+        }, 2200);
+      }
+
+      function copyTextToClipboard(text, btn) {
+        const onSuccess = () => {
+          const orig = btn.textContent;
+          btn.textContent = 'Copié ✓';
+          btn.classList.add('border-[#D4FF00]', 'text-[#D4FF00]');
+          showToast(`Copié : ${text}`);
+          setTimeout(() => {
+            btn.textContent = orig;
+            btn.classList.remove('border-[#D4FF00]', 'text-[#D4FF00]');
+          }, 1600);
+        };
+
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          if (ok) {
+            onSuccess();
+            return;
+          }
+        } catch (err) {
+          // Poursuite vers fallback navigator.clipboard
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(onSuccess).catch(() => showToast('Sélectionnez le texte pour copier'));
+        } else {
+          showToast('Sélectionnez le texte pour copier');
+        }
+      }
+
+      /* --- MODALE BTS SIO --- */
+      function setupModal() {
+        const modal = document.getElementById('bts-modal');
+        const closeBtn = document.getElementById('modal-close');
+        const okBtn = document.getElementById('modal-ok');
+        let lastTrigger = null;
+
+        function openModal(trigger) {
+          lastTrigger = trigger || document.activeElement;
+          modal.classList.remove('hidden');
+          closeBtn.focus();
+        }
+
+        function closeModal() {
+          modal.classList.add('hidden');
+          if (lastTrigger && typeof lastTrigger.focus === 'function') {
+            lastTrigger.focus();
+          }
+        }
+
+        document.addEventListener('click', (e) => {
+          const trigger = e.target.closest('#open-bts-modal');
+          if (trigger) {
+            openModal(trigger);
+            return;
+          }
+          if (e.target === modal || e.target.closest('#modal-close') || e.target.closest('#modal-ok')) {
+            closeModal();
+          }
+          const copyBtn = e.target.closest('.copy-btn');
+          if (copyBtn) {
+            copyTextToClipboard(copyBtn.getAttribute('data-copy'), copyBtn);
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+          }
+        });
+      }
+
+      /* --- MENU MOBILE & NAVIGATION ACTIVE --- */
+      function setupNavigation() {
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        function toggleMenu(forceClose) {
+          const isHidden = mobileMenu.classList.contains('hidden');
+          const shouldOpen = forceClose ? false : isHidden;
+          mobileMenu.classList.toggle('hidden', !shouldOpen);
+          iconOpen.classList.toggle('hidden', shouldOpen);
+          iconClose.classList.toggle('hidden', !shouldOpen);
+          mobileBtn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        mobileBtn.addEventListener('click', () => toggleMenu());
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => toggleMenu(true));
+        });
+
+        // Mise en surbrillance de la section active au défilement
+        const sections = ['accueil', 'profil', 'parcours', 'competences', 'realisations', 'contact'];
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveNav(activeId) {
+          navLinks.forEach(link => {
+            const isMatch = link.getAttribute('data-nav') === activeId;
+            if (isMatch) {
+              link.classList.add('text-[#D4FF00]', 'border-[#D4FF00]/45', 'bg-[#D4FF00]/[0.07]');
+              link.classList.remove('text-[#9E9EA4]', 'border-transparent');
+            } else {
+              link.classList.remove('text-[#D4FF00]', 'border-[#D4FF00]/45', 'bg-[#D4FF00]/[0.07]');
+              link.classList.add('text-[#9E9EA4]', 'border-transparent');
+            }
+          });
+        }
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                updateActiveNav(entry.target.id);
+              }
+            });
+          }, { rootMargin: '-35% 0px -55% 0px' });
+
+          sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+          });
+        }
+        updateActiveNav('accueil');
+      }
+
+      /* --- VALIDATION DU FORMULAIRE DE CONTACT --- */
+      function setupContactForm() {
+        // Clé d'accès Web3Forms : à remplacer par la tienne (voir web3forms.com).
+        // Elle est faite pour être publique : elle ne permet que d'envoyer des messages vers ta boîte mail.
+        const WEB3FORMS_KEY = 'f325de5e-cef1-4e15-8772-07570a229a75';
+        const MAIL_DESTINATAIRE = 'asmangham9@gmail.com';
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+        if (!form || !status) return;
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const name = document.getElementById('f-name').value.trim();
+          const email = document.getElementById('f-email').value.trim();
+          const msg = document.getElementById('f-msg').value.trim();
+
+          if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            status.className = 'text-xs font-mono text-[#E62E8A]';
+            status.textContent = "Renseigne ton nom, une adresse mail valide et un message.";
+            return;
+          }
+
+          status.className = 'text-xs font-mono text-[#D4FF00]';
+          status.textContent = "Envoi en cours…";
+
+          // Robot détecté : on fait semblant que tout va bien, sans rien envoyer
+          if (document.getElementById('f-botcheck').checked) {
+            status.textContent = "Message envoyé, merci !";
+            return;
+          }
+
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const submitLabel = submitBtn.querySelector('span');
+          const originalLabel = submitLabel.textContent;
+          submitBtn.disabled = true;
+          submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+          submitLabel.textContent = 'Envoi…';
+
+          // Solution de secours si la clé n'est pas encore renseignée : ouvre le logiciel de messagerie
+          if (WEB3FORMS_KEY === 'COLLE_ICI_TA_CLE_WEB3FORMS') {
+            const subject = encodeURIComponent('Message depuis ton portfolio — ' + name);
+            const body = encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
+            window.location.href = 'mailto:' + MAIL_DESTINATAIRE + '?subject=' + subject + '&body=' + body;
+            status.className = 'text-xs font-mono text-[#D4FF00]';
+            status.textContent = "Ouverture de ta messagerie… (envoi automatique non encore configuré)";
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+            submitLabel.textContent = originalLabel;
+            return;
+          }
+
+          try {
+            const res = await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                access_key: WEB3FORMS_KEY,
+                subject: 'Nouveau message depuis ton portfolio — ' + name,
+                from_name: 'Portfolio Asma N\'GHAM',
+                name: name,
+                email: email,
+                replyto: email,
+                message: msg,
+                botcheck: ''
+              })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              status.className = 'text-xs font-mono text-[#D4FF00]';
+              status.textContent = "Message envoyé, merci ! Je vous répondrai rapidement.";
+              form.reset();
+            } else {
+              throw new Error(data.message || 'Erreur');
+            }
+          } catch (err) {
+            status.className = 'text-xs font-mono text-[#E62E8A]';
+            status.textContent = "L'envoi a échoué. Vous pouvez m'écrire directement à " + MAIL_DESTINATAIRE + ".";
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+            submitLabel.textContent = originalLabel;
+          }
+        });
+      }
+
+      /* --- INITIALISATION --- */
+      renderTimeline();
+      renderSkills();
+      renderProjects();
+      renderContacts();
+      setupFilters();
+      setupModal();
+      setupNavigation();
+      setupContactForm();
+      window.addEventListener('hashchange', handleRoute);
+      handleRoute();
+    })();
+  </script>
+</body>
+</html>
